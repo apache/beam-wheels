@@ -1,0 +1,65 @@
+language: python
+python: 3.5
+sudo: required
+dist: trusty
+services: docker
+osx_image: xcode6.4
+
+env:
+  global:
+      - PYTHON_ARTIFACTS_DIR=python
+      - STAGING=https://dist.apache.org/repos/dist/dev/beam/${VERSION}/${PYTHON_ARTIFACTS_DIR}
+      - BEAM_SVN_DIR=https://dist.apache.org/repos/dist/dev/beam
+      - ZIP_FILE=apache-beam-${VERSION}.zip
+
+      - PLAT=x86_64
+      - BUILD_DEPENDS="Cython"
+      - TEST_DEPENDS=
+
+matrix:
+  exclude:
+    # Exclude the default Python 3.5 build
+    - python: 3.5
+  include:
+   - os: osx
+     language: generic
+     env:
+       - MB_PYTHON_VERSION=2.7
+   - os: linux
+     env:
+       - MB_PYTHON_VERSION=2.7
+   - os: linux
+     env:
+       - MB_PYTHON_VERSION=2.7
+       - UNICODE_WIDTH=16
+   - os: linux
+     env:
+       - MB_PYTHON_VERSION=2.7
+       - PLAT=i686
+   - os: linux
+     env:
+       - MB_PYTHON_VERSION=2.7
+       - PLAT=i686
+       - UNICODE_WIDTH=16
+
+before_install:
+    - source multibuild/common_utils.sh
+    - source multibuild/travis_steps.sh
+    - before_install
+
+install:
+    - wget $STAGING/$ZIP_FILE
+    - unzip $ZIP_FILE
+
+# VERSION and RC setup in travis build console > More options > Settings > Environment Variables with 'Display value in build log' enabled.
+script:
+    - build_wheel apache-beam-${VERSION} $PLAT
+
+after_success:
+    - ls -lh ${TRAVIS_BUILD_DIR}/wheelhouse/
+    - |
+      for artifact in ${TRAVIS_BUILD_DIR}/wheelhouse/*.*; do
+          mv $artifact ${artifact/$VERSION/$VERSION.$RC};
+      done
+    - source deploy_travis.sh
+    - deploy
