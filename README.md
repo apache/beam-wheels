@@ -44,7 +44,7 @@ There are 2 major parts in this repository.
 
 * In travis build console > More options > Settings > Environment Variables:
 
-  * Add `RC` and `VERSION` with 'Display value in build log' enabled (e.g. RC=rc1, RELEASE=2.6.0).
+  * Add `RC` and `VERSION` with 'Display value in build log' enabled (e.g. RC=rc1, VERSION=2.6.0).
   * Add `APACHE_USERNAME` and `APACHE_SECRET` with 'Display value in build log' disabled(which encrypt your credential).
   
     __NOTE__: If you have special characters in your credential, please escape them following the [guide](https://docs.travis-ci.com/user/encryption-keys/#note-on-escaping-certain-symbols) properly.
