@@ -57,9 +57,6 @@ script:
 
 after_success:
     - ls -lh ${TRAVIS_BUILD_DIR}/wheelhouse/
-    - |
-      for artifact in ${TRAVIS_BUILD_DIR}/wheelhouse/*.*; do
-          mv $artifact ${artifact/$VERSION/$VERSION.$RC};
-      done
+
     - source deploy_travis.sh
     - deploy
