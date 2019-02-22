@@ -42,6 +42,42 @@ matrix:
        - PLAT=i686
        - UNICODE_WIDTH=16
 
+   - os: osx
+     language: generic
+     env:
+       - MB_PYTHON_VERSION=3.5
+   - os: linux
+     env:
+       - MB_PYTHON_VERSION=3.5
+   - os: linux
+     env:
+       - MB_PYTHON_VERSION=3.5
+       - PLAT=i686
+
+   - os: osx
+     language: generic
+     env:
+       - MB_PYTHON_VERSION=3.6
+   - os: linux
+     env:
+       - MB_PYTHON_VERSION=3.6
+   - os: linux
+     env:
+       - MB_PYTHON_VERSION=3.6
+       - PLAT=i686
+
+   - os: osx
+     language: generic
+     env:
+       - MB_PYTHON_VERSION=3.7
+   - os: linux
+     env:
+       - MB_PYTHON_VERSION=3.7
+   - os: linux
+     env:
+       - MB_PYTHON_VERSION=3.7
+       - PLAT=i686
+
 before_install:
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
