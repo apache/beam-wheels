@@ -45,12 +45,10 @@ There are 2 major parts in this repository.
 * In travis build console > More options > Settings > Environment Variables:
 
   * Add `VERSION` with 'Display value in build log' enabled (e.g.VERSION=2.6.0).
-  * Add `APACHE_USERNAME` and `APACHE_SECRET` with 'Display value in build log' disabled(which encrypt your credential).
+  * Add `ACCESS_KEY_ID` and `SECRET_ACCESS_KEY` with 'Display value in build log' disabled.
+    These values can be obtained from the [GCP Storage Settings](https://console.cloud.google.com/storage/settings?project=apache-beam-testing)
+    under the interoperability tab.
   
-    __NOTE__: If you have special characters in your credential, please escape them following the [guide](https://docs.travis-ci.com/user/encryption-keys/#note-on-escaping-certain-symbols) properly.
+* Create and push a new branch(e.g. release_2_6_0) into your fork beam-wheels repository, which will trigger the travis build.
 
-* Create and push a new branch(e.g. release_2_6_0) into your folk beam-wheels repository, which will trigger the travis build.
-
-* Confirm that build successful and wheels get staged on dist.apache.org.
-
-* Delete your apache credential in travis environment.
+* Confirm that build successful and wheels get staged in beam-wheels-staging.
