@@ -2,7 +2,7 @@
 
 function deploy {
   cd ${TRAVIS_BUILD_DIR}/wheelhouse
-  svn co ${BEAM_SVN_DIR}/${VERSION}
+  svn co ${BEAM_SVN_DIR}/${VERSION} --non-interactive --trust-server-cert
   for artifact in *.whl; do
     echo $artifact
     mv $artifact ${VERSION}/${PYTHON_ARTIFACTS_DIR}/$artifact
