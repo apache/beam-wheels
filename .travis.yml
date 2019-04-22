@@ -7,6 +7,7 @@ osx_image: xcode8
 
 env:
   global:
+      - VERSION=$(echo ${TRAVIS_BRANCH} | sed 's/release-//')
       - PYTHON_ARTIFACTS_DIR=python
       - STAGING=https://dist.apache.org/repos/dist/dev/beam/${VERSION}/${PYTHON_ARTIFACTS_DIR}
       - ZIP_FILE=apache-beam-${VERSION}.zip
@@ -98,3 +99,5 @@ deploy:
   skip_cleanup: true
   acl: public-read
   local-dir: wheelhouse
+  on:
+    all_branches: true
