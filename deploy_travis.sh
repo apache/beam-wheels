@@ -11,7 +11,7 @@ function deploy {
     # Your apache credential is needed here in order to upload artifacts into dist.apache.org
     # Please add APACHE_USERNAME and APACHE_SECRET in travis build console > More options > Settings > Environment Variables with 'Display value in build log' disabled.
     # After build finishes, delete your environment variables.
-    svn commit --non-interactive --no-auth-cache --username "$APACHE_USERNAME" --password "$APACHE_SECRET" -m "Upload python wheels"
+    svn commit --non-interactive --trust-server-cert --no-auth-cache --username "$APACHE_USERNAME" --password "$APACHE_SECRET" -m "Upload python wheels"
     cd ..
   done
 }
