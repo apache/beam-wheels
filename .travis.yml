@@ -7,9 +7,9 @@ osx_image: xcode8
 
 env:
   global:
+      - VERSION=$(echo ${TRAVIS_BRANCH} | sed 's/release-//')
       - PYTHON_ARTIFACTS_DIR=python
       - STAGING=https://dist.apache.org/repos/dist/dev/beam/${VERSION}/${PYTHON_ARTIFACTS_DIR}
-      - BEAM_SVN_DIR=https://dist.apache.org/repos/dist/dev/beam
       - ZIP_FILE=apache-beam-${VERSION}.zip
 
       - PLAT=x86_64
@@ -91,8 +91,13 @@ install:
 script:
     - build_wheel apache-beam-${VERSION} $PLAT
 
-after_success:
-    - ls -lh ${TRAVIS_BUILD_DIR}/wheelhouse/
-
-    - source deploy_travis.sh
-    - deploy
+deploy:
+  provider: gcs
+  access_key_id: ${ACCESS_KEY_ID}
+  secret_access_key: ${SECRET_ACCESS_KEY}
+  bucket: "beam-wheels-staging"
+  skip_cleanup: true
+  acl: public-read
+  local-dir: wheelhouse
+  on:
+    all_branches: true
