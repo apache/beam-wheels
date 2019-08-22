@@ -38,16 +38,6 @@ There are 2 major parts in this repository.
 
 ## User Guide
 
-* Fork this repo into your own github account.
+* Create and push a new branch(e.g. release-2.6.0) into the beam-wheels repository, which will trigger the travis build of that version.
 
-* Sign up [travis](https://travis-ci.com/) with your github account and add this folk beam-wheels repository into travis.
-
-* In travis build console > More options > Settings > Environment Variables:
-
-  * Add `ACCESS_KEY_ID` and `SECRET_ACCESS_KEY` with 'Display value in build log' disabled.
-    These values can be obtained from the [GCP Storage Settings](https://console.cloud.google.com/storage/settings?project=apache-beam-testing)
-    under the interoperability tab.
-  
-* Create and push a new branch(e.g. release-2.6.0) into your fork beam-wheels repository, which will trigger the travis build of that version.
-
-* Confirm that build successful and wheels get staged in beam-wheels-staging.
+* Confirm that build successful and wheels get staged in beam-wheels-staging gcs bucket.
