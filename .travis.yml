@@ -99,5 +99,7 @@ deploy:
   skip_cleanup: true
   acl: public-read
   local-dir: wheelhouse
+  edge:
+    branch: master
   on:
     all_branches: true
