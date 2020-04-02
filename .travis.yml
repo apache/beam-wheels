@@ -1,9 +1,10 @@
 language: python
 python: 3.5
+sudo: required
 dist: trusty
 services: docker
 osx_image: xcode9.4
-os: linux
+
 env:
   global:
       - VERSION=$(echo ${TRAVIS_BRANCH} | sed 's/release-//')
@@ -15,7 +16,7 @@ env:
       - BUILD_DEPENDS="Cython"
       - TEST_DEPENDS=
 
-jobs:
+matrix:
   include:
    - os: osx
      language: generic
@@ -92,9 +93,9 @@ deploy:
   access_key_id: ${ACCESS_KEY_ID}
   secret_access_key: ${SECRET_ACCESS_KEY}
   bucket: "beam-wheels-staging"
-  cleanup: true
+  skip_cleanup: true
   acl: public-read
-  local_dir: wheelhouse
+  local-dir: wheelhouse
   edge:
     branch: master
   on:
