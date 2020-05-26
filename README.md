@@ -32,9 +32,11 @@ There are 2 major parts in this repository.
 * [travis](https://travis-ci.com/) configuration files, setups environment variables and deployment strategy.
   
   * `.travis.yml` contains a set of [environment variables](https://docs.travis-ci.com/user/environment-variables/) and steps of build process.
-  * `deploy_travis.sh` defines that final python wheels will be deployed to [dist.apache.org/dev](https://dist.apache.org/repos/dist/dev/beam/)
-    using svn with your apache credential.
   * `config.sh` defines custom build steps.
+  
+
+Additionally, for the release process to be complete:
+* Also use [sign_hash_python_wheel.sh](https://github.com/apache/beam/blob/master/release/src/main/scripts/sign_hash_python_wheels.sh) from the main beam repo in order to deploy the final python wheels to [dist.apache.org/dev](https://dist.apache.org/repos/dist/dev/beam/) using svn with your apache credential.
 
 ## User Guide
 
