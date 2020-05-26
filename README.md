@@ -36,7 +36,7 @@ There are 2 major parts in this repository.
   
 
 Additionally, for the release process to be complete:
-* Also use [sign_hash_python_wheel.sh](https://github.com/apache/beam/blob/master/release/src/main/scripts/sign_hash_python_wheels.sh) from the main beam repo in order to deploy the final python wheels to [dist.apache.org/dev](https://dist.apache.org/repos/dist/dev/beam/) using svn with your apache credential.
+* Also use [sign_hash_python_wheels.sh](https://github.com/apache/beam/blob/master/release/src/main/scripts/sign_hash_python_wheels.sh) from the main beam repo in order to deploy the final python wheels to [dist.apache.org/dev](https://dist.apache.org/repos/dist/dev/beam/) using svn with your apache credential.
 
 ## User Guide
 
