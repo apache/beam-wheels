@@ -17,6 +17,10 @@
     under the License.
 -->
 
+:no_entry: [DEPRECATED]
+
+This repository is deprecated since python wheels for [Apache Beam](https://github.com/apache/beam) are build with use of GitHub Actions in Apache Beam repository itself.
+
 # Apache Beam Wheels
 
 ## Overview
